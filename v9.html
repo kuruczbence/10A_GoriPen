@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GoriPen — Trendi Írószerek Diákoknak</title>
+  <meta name="description" content="A GoriPen a legmenőbb írószer webshop diákoknak. Vásárolj tollakat, füzeteket, tervezőket, matricákat és játssz Road Rush-t, hogy kuponokat nyerj!" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5f9f0;
+      --card: #ffffff;
+      --border: #d4e8d4;
+      --text: #1a2e22;
+      --muted: #5a7060;
+      --primary: #2db56e;
+      --primary-dark: #1e8f55;
+      --secondary: #ffd540;
+      --accent: #ff5c8d;
+      --purple: #7b35c8;
+      --orange: #f07020;
+      --shadow: 0 8px 32px rgba(30,60,40,.12);
+      --shadow-lg: 0 16px 48px rgba(30,60,40,.18);
+      --radius: 22px;
+      --car1: #2c4a7c;
+      --car2: #35882e;
+      --car3: #d96010;
+      --car4: #7b35c8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; }
+    .container { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+
+    /* ── NAV ── */
+    .site-header {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--border);
+      box-shadow: 0 2px 16px rgba(30,100,60,.07);
+    }
+    .nav {
+      min-height: 72px; display: flex; align-items: center;
+      justify-content: space-between; gap: 16px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .brand-logo { width: 44px; height: 44px; object-fit: contain; border-radius: 12px; }
+    .brand-name {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.9rem; color: var(--primary);
+      letter-spacing: .01em;
+    }
+    .nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .nav-links a {
+      font-weight: 800; color: #3e4d46; font-size: .95rem;
+      padding: 6px 12px; border-radius: 10px; transition: background .18s, color .18s;
+    }
+    .nav-links a:hover { background: #e8f5ec; color: var(--primary); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .cart-btn {
+      border: none; background: var(--primary); color: white;
+      padding: 10px 16px; border-radius: 14px; font-weight: 800; font-size: .95rem;
+      transition: background .18s;
+    }
+    .cart-btn:hover { background: var(--primary-dark); }
+    .menu-btn {
+      display: none; border: none; background: #eef7f0;
+      padding: 8px 12px; border-radius: 12px; font-size: 1.2rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 520px;
+      display: flex; align-items: center; overflow: hidden;
+    }
+    .hero-bg { position: absolute; inset: 0; }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, rgba(245,249,240,.97) 0%, rgba(245,249,240,.88) 50%, rgba(245,249,240,.3) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1.15fr .85fr;
+      gap: 24px; align-items: center; padding: 56px 0;
+    }
+    .eyebrow {
+      font-size: .88rem; text-transform: uppercase;
+      letter-spacing: .12em; color: var(--primary);
+      font-weight: 900; margin-bottom: 10px;
+    }
+    .hero h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      line-height: 1.1; margin-bottom: 16px; color: var(--text);
+    }
+    .hero h1 span { color: var(--primary); }
+    .hero-text {
+      font-size: 1.08rem; color: var(--muted);
+      max-width: 32rem; margin-bottom: 28px; line-height: 1.65;
+    }
+    .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 50px; padding: 0 22px; border-radius: 16px;
+      font-weight: 900; font-size: 1rem; border: none; transition: transform .15s, box-shadow .15s;
+      box-shadow: var(--shadow);
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .btn.small { min-height: 42px; padding: 0 18px; font-size: .95rem; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-secondary { background: var(--secondary); color: var(--text); }
+    .btn-secondary:hover { background: #ffc800; }
+    .btn-purple { background: var(--purple); color: white; }
+    .hero-mascot-wrap { display: flex; justify-content: center; }
+    .hero-mascot { width: min(300px, 100%); filter: drop-shadow(0 24px 40px rgba(0,0,0,.2)); }
+
+    /* ── SECTIONS ── */
+    .section { padding: 64px 0; }
+    .section-muted { background: #eaf4ec; }
+    .section-dark { background: var(--text); color: white; }
+    .section-title {
+      font-family: 'Fredoka One', cursive;
+      margin: 0 0 8px; font-size: 2.1rem; color: var(--text);
+    }
+    .section-title.center { text-align: center; }
+    .section-title.white { color: white; }
+    .section-sub { margin: 0 0 32px; color: var(--muted); font-size: 1.02rem; }
+    .section-sub.center { text-align: center; }
+    .section-sub.white { color: rgba(255,255,255,.75); }
+
+    /* ── CATEGORIES ── */
+    .category-grid {
+      display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px;
+    }
+    .category-card {
+      border-radius: 20px; padding: 22px 12px; text-align: center;
+      font-weight: 800; font-size: .9rem; box-shadow: var(--shadow);
+      transition: transform .2s; cursor: default;
+    }
+    .category-card:hover { transform: translateY(-4px); }
+    .category-card .emoji { font-size: 2.1rem; margin-bottom: 10px; }
+    .c1 { background: rgba(45,181,110,.14); color: var(--primary-dark); }
+    .c2 { background: rgba(255,213,64,.3); color: #7a5a00; }
+    .c3 { background: rgba(255,92,141,.12); color: #c0185a; }
+    .c4 { background: rgba(123,53,200,.1); color: var(--purple); }
+    .c5 { background: rgba(240,112,32,.12); color: #b84d00; }
+    .c6 { background: rgba(45,181,110,.08); color: var(--primary-dark); }
+
+    /* ── PRODUCTS ── */
+    .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .product-card {
+      background: var(--card); border: 2px solid var(--border);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      overflow: hidden; transition: transform .2s, box-shadow .2s;
+    }
+    .product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+    .product-image { aspect-ratio: 1/1; overflow: hidden; }
+    .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+    .product-card:hover .product-image img { transform: scale(1.06); }
+    .product-body { padding: 16px; }
+    .product-head { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; margin-bottom: 6px; }
+    .product-body h3 { margin: 0; font-size: .97rem; font-weight: 800; }
+    .product-body p { margin: 0 0 12px; color: var(--muted); font-size: .88rem; }
+    .product-body strong { display: block; font-family: 'Fredoka One', cursive; font-size: 1.3rem; color: var(--primary); margin-bottom: 12px; }
+    .product-body button {
+      width: 100%; border: none; background: var(--primary); color: white;
+      border-radius: 14px; padding: 11px 12px; font-weight: 900; font-size: .95rem;
+      transition: background .18s;
+    }
+    .product-body button:hover { background: var(--primary-dark); }
+    .badge {
+      display: inline-flex; padding: 4px 9px; border-radius: 999px;
+      font-size: .7rem; font-weight: 900; white-space: nowrap; flex-shrink: 0;
+    }
+    .badge-accent { background: rgba(255,92,141,.14); color: #c0185a; }
+    .badge-primary { background: rgba(45,181,110,.14); color: var(--primary-dark); }
+    .badge-secondary { background: rgba(255,213,64,.3); color: #7a5a00; }
+
+    /* ── BUNDLES ── */
+    .bundle-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .bundle-card {
+      background: var(--card); border: 2px solid var(--border);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      overflow: hidden; transition: transform .2s;
+    }
+    .bundle-card:hover { transform: translateY(-4px); }
+    .bundle-image { aspect-ratio: 16/9; overflow: hidden; }
+    .bundle-image img { width: 100%; height: 100%; object-fit: cover; }
+    .bundle-body { padding: 18px; }
+    .bundle-body h3 { margin-bottom: 8px; font-weight: 800; }
+    .bundle-body p { color: var(--muted); font-size: .9rem; margin-bottom: 14px; }
+    .bundle-price { display: flex; gap: 10px; align-items: baseline; margin-bottom: 14px; }
+    .bundle-price strong { font-family: 'Fredoka One', cursive; font-size: 1.35rem; color: var(--primary); }
+    .bundle-price span { text-decoration: line-through; color: var(--muted); font-size: .9rem; }
+    .bundle-body button {
+      width: 100%; border: none; background: var(--secondary); color: var(--text);
+      border-radius: 14px; padding: 12px; font-weight: 900;
+      transition: background .18s;
+    }
+    .bundle-body button:hover { background: #ffc800; }
+
+    /* ── GAME PROMO BANNER ── */
+    .game-promo {
+      padding: 52px 0;
+      background: linear-gradient(135deg, #2db56e 0%, #1a7a4a 60%, #12593a 100%);
+      color: white; position: relative; overflow: hidden;
+    }
+    .game-promo::before {
+      content: '🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️🏎️';
+      position: absolute; top: 10px; left: 0; right: 0;
+      font-size: 1.4rem; letter-spacing: 2rem; opacity: .08;
+      white-space: nowrap; overflow: hidden;
+    }
+    .game-promo-grid {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 28px; align-items: center; position: relative; z-index: 1;
+    }
+    .game-promo h2 {
+      font-family: 'Fredoka One', cursive;
+      margin: 0 0 12px; font-size: 2.1rem;
+    }
+    .game-promo p { max-width: 38rem; opacity: .9; margin-bottom: 22px; line-height: 1.6; }
+    .promo-mascot { width: 130px; filter: drop-shadow(0 14px 24px rgba(0,0,0,.3)); }
+
+    /* ── CAR SELECTION ── */
+    .car-select-section { padding: 32px 0 0; }
+    .car-cards-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px;
+    }
+    .car-select-card {
+      background: var(--card); border: 3px solid var(--border);
+      border-radius: 20px; padding: 18px 14px;
+      text-align: center; cursor: pointer;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+      position: relative;
+    }
+    .car-select-card:hover { transform: translateY(-5px); }
+    .car-select-card.selected {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(45,181,110,.3), var(--shadow-lg);
+    }
+    .car-select-card.selected::after {
+      content: '✓';
+      position: absolute; top: -10px; right: -10px;
+      background: var(--primary); color: white;
+      width: 26px; height: 26px; border-radius: 50%;
+      font-size: .85rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .car-canvas-preview {
+      display: block; margin: 0 auto 12px;
+      border-radius: 14px;
+      background: transparent;
+    }
+    .car-select-card h4 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1rem; margin-bottom: 6px; color: var(--text);
+    }
+    .car-select-card p { font-size: .78rem; color: var(--muted); margin-bottom: 10px; line-height: 1.45; }
+    .car-stat-row { display: flex; flex-direction: column; gap: 4px; }
+    .car-stat {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: .72rem; font-weight: 800; color: var(--muted);
+    }
+    .stat-stars { display: flex; gap: 2px; }
+    .star { font-size: .65rem; }
+    .star.on { color: #ffc107; }
+    .star.off { color: #ddd; }
+
+    /* ── GAME SECTION ── */
+    #game.section { padding: 0 0 60px; }
+    .game-outer-wrap {
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .game-layout {
+      display: grid;
+      grid-template-columns: auto 300px;
+      gap: 20px;
+      align-items: start;
+      width: 100%;
+      max-width: 760px;
+    }
+    .game-canvas-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+    }
+    #gameCanvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: min(600px, calc(100vh - 200px));
+      border-radius: 18px;
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow-lg);
+      background: #7ec850;
+    }
+    .game-side { display: flex; flex-direction: column; gap: 14px; }
+    .info-card {
+      background: var(--card); border: 2px solid var(--border);
+      border-radius: 18px; padding: 18px; box-shadow: var(--shadow);
+    }
+    .info-card h3 {
+      font-family: 'Fredoka One', cursive;
+      margin-bottom: 8px; font-size: 1.05rem; color: var(--primary);
+    }
+    .info-card p { color: var(--muted); font-size: .9rem; line-height: 1.55; }
+    .info-card strong { color: var(--text); }
+    .game-controls-header {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 14px; margin-bottom: 20px;
+    }
+    .game-controls-header h2 {
+      font-family: 'Fredoka One', cursive; font-size: 1.7rem;
+    }
+    .game-controls-header p { color: var(--muted); font-size: .9rem; margin-top: 4px; }
+
+    /* ── REWARDS ── */
+    .reward-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .reward-card {
+      background: var(--card); border: 2px solid var(--border);
+      border-radius: var(--radius); text-align: center;
+      padding: 28px 18px; box-shadow: var(--shadow);
+      transition: transform .2s;
+    }
+    .reward-card:hover { transform: translateY(-4px); }
+    .reward-emoji { font-size: 2.6rem; margin-bottom: 12px; }
+    .reward-card p { margin: 0 0 8px; color: var(--muted); font-size: .9rem; }
+    .reward-card strong {
+      display: block; font-family: 'Fredoka One', cursive;
+      font-size: 1.5rem; color: var(--primary); margin-bottom: 12px;
+    }
+    .reward-card code {
+      display: inline-block; background: #edf5ef; border-radius: 12px;
+      padding: 9px 16px; font-weight: 900; color: var(--primary-dark); font-size: .95rem;
+      letter-spacing: .05em;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid; grid-template-columns: 200px 1fr;
+      gap: 32px; align-items: center;
+    }
+    .about-mascot {
+      width: 180px; justify-self: center;
+      filter: drop-shadow(0 16px 24px rgba(0,0,0,.18));
+    }
+    .about-copy h2 { font-family: 'Fredoka One', cursive; font-size: 2rem; margin-bottom: 16px; }
+    .about-copy p { color: var(--muted); margin-bottom: 12px; line-height: 1.65; }
+
+    /* ── FOOTER ── */
+    .footer { background: #1a2e22; color: rgba(255,255,255,.85); padding: 36px 0; }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.2fr 1fr auto;
+      gap: 20px; align-items: center;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 12px; }
+    .footer-brand img { width: 44px; height: 44px; object-fit: contain; border-radius: 10px; }
+    .footer-brand strong { display: block; color: white; font-size: 1.2rem; }
+    .footer-brand p { margin: 4px 0 0; font-size: .85rem; color: rgba(255,255,255,.6); }
+    .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    .footer-links a { font-weight: 700; font-size: .92rem; transition: color .18s; }
+    .footer-links a:hover { color: var(--primary); }
+    .footer-copy { color: rgba(255,255,255,.55); font-size: .82rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .car-cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .bundle-grid, .reward-grid { grid-template-columns: 1fr 1fr; }
+      .hero-content, .game-promo-grid, .footer-grid, .about-grid { grid-template-columns: 1fr; }
+      .hero-mascot-wrap { order: -1; }
+      .about-mascot { justify-self: start; }
+      .game-layout { grid-template-columns: 1fr; max-width: 440px; }
+      .game-side { display: grid; grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 760px) {
+      .menu-btn { display: inline-flex; }
+      .nav-links {
+        position: absolute; left: 16px; right: 16px; top: 70px;
+        display: none; flex-direction: column;
+        background: white; border: 2px solid var(--border);
+        border-radius: 18px; padding: 14px; box-shadow: var(--shadow-lg);
+        z-index: 50;
+      }
+      .nav-links.open { display: flex; }
+      .category-grid { grid-template-columns: repeat(3, 1fr); }
+      .product-grid { grid-template-columns: 1fr; }
+      .car-cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .bundle-grid, .reward-grid { grid-template-columns: 1fr; }
+      .cart-btn { display: none; }
+      .game-side { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="#top">
+      <img src="assets/gorilla-mascot.png" alt="GoriPen kabala" class="brand-logo">
+      <span class="brand-name">GoriPen</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#termekek">Termékek</a>
+      <a href="#csomagok">Csomagok</a>
+      <a href="#rolunk">Rólunk</a>
+      <a href="#jatek">Játék</a>
+      <a href="#jutalmak">Jutalmak</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="cart-btn" type="button">🛒 Kosár (0)</button>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Menü megnyitása">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="assets/hero-bg.jpg" alt="" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-copy">
+        <p class="eyebrow">Üdv a GoriPen-nél</p>
+        <h1>Felszerelkezz az <span>iskolára</span> stílusosan!</h1>
+        <p class="hero-text">
+          A legmenőbb írószerek, füzetek és iskolai kellékek — maga a gorilla válogatta össze neked.
+          Légy kreatív a GoriPen-nel!
+        </p>
+        <div class="hero-buttons">
+          <a href="#termekek" class="btn btn-primary">Vásárolj Most</a>
+          <a href="#jatek" class="btn btn-secondary">🎮 Játssz &amp; Nyerj</a>
+        </div>
+      </div>
+      <div class="hero-mascot-wrap">
+        <img src="assets/gorilla-mascot.png" alt="GoriPen gorilla kabala" class="hero-mascot" style="height:150%">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CATEGORIES ── -->
+  <section class="categories section-muted section">
+    <div class="container">
+      <h2 class="section-title center">Kategóriák szerint</h2>
+      <p class="section-sub center">Minden, amire az iskolában szükséged lehet</p>
+      <div class="category-grid">
+        <div class="category-card c1"><div class="emoji">🖊️</div><div>Tollak & Zselés tollak</div></div>
+        <div class="category-card c2"><div class="emoji">📓</div><div>Füzetek</div></div>
+        <div class="category-card c3"><div class="emoji">⭐</div><div>Matrica csomagok</div></div>
+        <div class="category-card c4"><div class="emoji">🎨</div><div>Filcek & Rajzeszközök</div></div>
+        <div class="category-card c5"><div class="emoji">🎒</div><div>Tolltartók</div></div>
+        <div class="category-card c6"><div class="emoji">📅</div><div>Tervezők</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRODUCTS ── -->
+  <section id="termekek" class="section">
+    <div class="container">
+      <h2 class="section-title center">Kiemelt Termékek</h2>
+      <p class="section-sub center">A gorilla által kézzel válogatva minden diáknak</p>
+      <div class="product-grid">
+        <article class="product-card">
+          <div class="product-image"><img src="assets/product-gel-pens.jpg" alt="Zselés toll készlet"></div>
+          <div class="product-body">
+            <div class="product-head"><h3>Zselés Toll Készlet (8 db)</h3><span class="badge badge-accent">Bestseller</span></div>
+            <p>Sima tinta, élénk színek</p>
+            <strong>1 599 Ft</strong>
+            <button>Kosárba</button>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/Gorilla.Jungle.Notebook.2.PNG.PNG" alt="Dzsungel Füzet" style="object-fit:contain;background:#e8f5e9"></div>
+          <div class="product-body">
+            <div class="product-head"><h3>Dzsungel Füzet A4</h3></div>
+            <p>120 vonalas oldal, spirális kötés</p>
+            <strong>1 099 Ft</strong>
+            <button>Kosárba</button>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/product-stickers.jpg" alt="Matrica csomag"></div>
+          <div class="product-body">
+            <div class="product-head"><h3>Holografikus Matrica Csomag</h3><span class="badge badge-accent">Új</span></div>
+            <p>30+ menő iskolai matrica</p>
+            <strong>949 Ft</strong>
+            <button>Kosárba</button>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/pencilcase.gorilla.png.png" alt="Gorilla Tolltartó" style="object-fit:contain;background:#fff3e0"></div>
+          <div class="product-body">
+            <div class="product-head"><h3>Gorilla Tolltartó</h3></div>
+            <p>Tágas cipzáros tok</p>
+            <strong>2 199 Ft</strong>
+            <button>Kosárba</button>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/product-markers.jpg" alt="Filcek"></div>
+          <div class="product-body">
+            <div class="product-head"><h3>Neon Filc Készlet (12 db)</h3></div>
+            <p>Kétvégű, vízbázisú filc</p>
+            <strong>2 399 Ft</strong>
+            <button>Kosárba</button>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/product-planner.jpg" alt="Tervező"></div>
+          <div class="product-body">
+            <div class="product-head"><h3>Heti Tervező — Pasztell</h3><span class="badge badge-primary">Népszerű</span></div>
+            <p>52 hét, fülekkel ellátott</p>
+            <strong>1 899 Ft</strong>
+            <button>Kosárba</button>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/product-desk-organizer.jpg" alt="Asztali rendező"></div>
+          <div class="product-body">
+            <div class="product-head"><h3>Asztali Rendező — Kék</h3></div>
+            <p>4 rekesz, stabil anyag</p>
+            <strong>3 199 Ft</strong>
+            <button>Kosárba</button>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/product-bundle.jpg" alt="Kezdőcsomag"></div>
+          <div class="product-body">
+            <div class="product-head"><h3>Iskolai Kezdőcsomag</h3><span class="badge badge-secondary">Értékes Csomag</span></div>
+            <p>Minden, amire az év elején szükség van</p>
+            <strong>4 799 Ft</strong>
+            <button>Kosárba</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BUNDLES ── -->
+  <section id="csomagok" class="section section-muted">
+    <div class="container">
+      <h2 class="section-title center">Kiemelt Csomagok</h2>
+      <p class="section-sub center">Többet spórolsz, ha csomagban vásárolsz!</p>
+      <div class="bundle-grid">
+        <article class="bundle-card">
+          <div class="bundle-image"><img src="assets/product-bundle.jpg" alt="Vissza az iskolába készlet"></div>
+          <div class="bundle-body">
+            <h3>Vissza az Iskolába Készlet</h3>
+            <p>Zselés toll + Füzet + Matricák + Tolltartó</p>
+            <div class="bundle-price"><strong>4 499 Ft</strong><span>5 949 Ft</span></div>
+            <button>Csomag Megvásárlása</button>
+          </div>
+        </article>
+        <article class="bundle-card">
+          <div class="bundle-image"><img src="assets/product-gel-pens.jpg" alt="Kreatív kezdőcsomag"></div>
+          <div class="bundle-body">
+            <h3>Kreatív Kezdőcsomag</h3>
+            <p>Filcek + Füzet + Tervező</p>
+            <div class="bundle-price"><strong>3 849 Ft</strong><span>5 399 Ft</span></div>
+            <button>Csomag Megvásárlása</button>
+          </div>
+        </article>
+        <article class="bundle-card">
+          <div class="bundle-image"><img src="assets/product-notebook.jpg" alt="Tanulás Esszenciák"></div>
+          <div class="bundle-body">
+            <h3>Tanulás Esszenciák</h3>
+            <p>2× Füzet + Zselés toll + Asztali rendező</p>
+            <div class="bundle-price"><strong>5 149 Ft</strong><span>7 099 Ft</span></div>
+            <button>Csomag Megvásárlása</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── GAME PROMO ── -->
+  <section class="game-promo">
+    <div class="container game-promo-grid">
+      <div>
+        <h2>🎮 GoriPen Road Rush</h2>
+        <p>
+          Játssz a mini játékunkkal! Kerüld el a forgalmat, gyűjtsd össze az írószereket,
+          és szerezz exkluzív kuponokat az áruházhoz. W/A/D-vel vezeted az autót — meddig jutsz el?
+        </p>
+        <a href="#jatek" class="btn btn-secondary">Játssz Most ▼</a>
+      </div>
+      <img src="assets/gorilla-mascot.png" alt="GoriPen kabala" class="promo-mascot">
+    </div>
+  </section>
+
+  <!-- ── GAME SECTION ── -->
+  <section id="jatek" class="section">
+    <div class="container">
+
+      <!-- Car selection -->
+      <div class="car-select-section">
+        <h2 class="section-title center">Válaszd ki a járműved!</h2>
+        <p class="section-sub center">Minden autónak más képessége van — melyik illik hozzád?</p>
+        <div class="car-cards-grid" id="carCardsGrid">
+          <!-- filled by JS -->
+        </div>
+      </div>
+
+      <!-- Game -->
+      <div class="game-outer-wrap">
+        <div class="game-controls-header" style="width:100%;max-width:760px">
+          <div>
+            <h2>Road Rush</h2>
+            <p>W/A/D – irányítás &nbsp;|&nbsp; Kerüld az autókat, gyűjtsd az írószereket!</p>
+          </div>
+          <button id="startGameBtn" class="btn btn-primary small">▶ Játék Indítása</button>
+        </div>
+        <div class="game-layout">
+          <div class="game-canvas-wrap">
+            <canvas id="gameCanvas" width="420" height="620"></canvas>
+          </div>
+          <div class="game-side">
+            <div class="info-card">
+              <h3>🕹️ Irányítás</h3>
+              <p><strong>W</strong> – előre &nbsp; <strong>A</strong> – balra &nbsp; <strong>D</strong> – jobbra<br><strong>S</strong> – lassítás</p>
+            </div>
+            <div class="info-card">
+              <h3>🎯 Cél</h3>
+              <p>Gyűjtsd össze az írószereket, kerüld el az autókat, és tartsd meg a 3 életed. Minél több tárgyat, annál jobb kupon!</p>
+            </div>
+            <div class="info-card">
+              <h3>🎁 Jutalmak</h3>
+              <p>10 tárgy → <strong>GORI5</strong><br>25 tárgy → <strong>GORI10</strong><br>50 tárgy → <strong>GORI20</strong></p>
+            </div>
+            <div class="info-card" id="carInfoCard">
+              <h3>🚗 Kiválasztott Autó</h3>
+              <p id="selectedCarInfo">Válassz egyet a fenti autók közül!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── REWARDS ── -->
+  <section id="jutalmak" class="section section-muted">
+    <div class="container">
+      <h2 class="section-title center">🎁 Jutalmak &amp; Kuponok</h2>
+      <p class="section-sub center">Gyűjts írószereket Road Rush-ban, hogy exkluzív kedvezményeket kapj!</p>
+      <div class="reward-grid">
+        <article class="reward-card">
+          <div class="reward-emoji">🥉</div>
+          <p>Gyűjts 10 tárgyat</p>
+          <strong>5% kedvezmény</strong>
+          <code>GORI5</code>
+        </article>
+        <article class="reward-card">
+          <div class="reward-emoji">🥈</div>
+          <p>Gyűjts 25 tárgyat</p>
+          <strong>10% kedvezmény</strong>
+          <code>GORI10</code>
+        </article>
+        <article class="reward-card">
+          <div class="reward-emoji">🥇</div>
+          <p>Gyűjts 50 tárgyat</p>
+          <strong>20% kedvezmény</strong>
+          <code>GORI20</code>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="rolunk" class="section">
+    <div class="container about-grid">
+      <img src="assets/gorilla-mascot.png" alt="GoriPen kabala" class="about-mascot">
+      <div class="about-copy">
+        <h2>Ismerkedj meg a GoriPen-nel 🦍</h2>
+        <p>
+          A GoriPen egy fiktív írószer márka, amelyet a város legmenőbb gorillája alapított.
+          Küldetésünk? Az iskolai kellékeket szórakoztatóvá, megfizethető és stílusos élménnyé tenni minden diák számára.
+          A tolloktól a tervezőkig minden termékünk a kreativitást hivatott felszabadítani.
+        </p>
+        <p>
+          Ez a projekt iskolai feladatként készült, hogy bemutasson egy működő webshop konceptet
+          interaktív elemekkel. Amit látod — az áruháztól a mini játékig — mind a bemutatónk része. 🎓
+        </p>
+        <p><strong>GoriPen Kft.</strong> · Törzstőke: 3 000 000 Ft · Tevékenység: írószer értékesítés &amp; digitális játék fejlesztés</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="assets/gorilla-mascot.png" alt="GoriPen">
+      <div>
+        <strong>GoriPen</strong>
+        <p>A legjobb írószer bolt az interneten 🦍</p>
+      </div>
+    </div>
+    <nav class="footer-links">
+      <a href="#termekek">Termékek</a>
+      <a href="#csomagok">Csomagok</a>
+      <a href="#rolunk">Rólunk</a>
+      <a href="#jatek">Játék</a>
+      <a href="#jutalmak">Jutalmak</a>
+    </nav>
+    <p class="footer-copy">© 2026 GoriPen — Iskolai Projekt. Nem valódi üzlet.</p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   CAR DEFINITIONS
+   ============================================================ */
+const CARS = [
+  {
+    id: 0,
+    name: 'Kezdő Szállító',
+    desc: 'Biztonságos és megbízható. Kezdő játékosoknak ajánlott.',
+    color: '#2c4a7c',
+    roofColor: '#3d62a0',
+    difficulty: 1,
+    speedMult: 0.82,
+    pickupBonus: 1.25,
+    special: '+ Extra toll gyűjtési hatótáv',
+    stars: { nehezseg: 1, sebesseg: 1, kapacitas: 3 }
+  },
+  {
+    id: 1,
+    name: 'Eco Pen Delivery',
+    desc: 'Gyors és hatékony, környezetbarát. Csökkentett üzemanyag-fogyasztás.',
+    color: '#35882e',
+    roofColor: '#4aaa41',
+    difficulty: 2,
+    speedMult: 1.0,
+    pickupBonus: 1.0,
+    special: '⚡ Kisebb ütközési sérülés',
+    stars: { nehezseg: 2, sebesseg: 2, kapacitas: 2 }
+  },
+  {
+    id: 2,
+    name: 'Notebook Express',
+    desc: 'A leggyorsabb a füzetek és tollak számára. Nagy sebesség, kisebb cargo.',
+    color: '#d96010',
+    roofColor: '#f07a25',
+    difficulty: 3,
+    speedMult: 1.28,
+    pickupBonus: 0.8,
+    special: '💨 Drasztikusan megnövelt sebesség',
+    stars: { nehezseg: 3, sebesseg: 5, kapacitas: 1 }
+  },
+  {
+    id: 3,
+    name: 'Sticker Squad',
+    desc: 'Speciális, matricák gyűjtésére optimalizálva. Dupla matrica pont.',
+    color: '#7b35c8',
+    roofColor: '#9b55e8',
+    difficulty: 2,
+    speedMult: 0.93,
+    pickupBonus: 1.1,
+    special: '⭐ Dupla matrica pont',
+    stars: { nehezseg: 2, sebesseg: 2, kapacitas: 3 }
+  }
+];
+
+let selectedCar = CARS[0];
+
+/* Draw a top-down cartoon car onto a canvas */
+function drawCarPreview(canvas, car, scale = 1) {
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width;
+  const H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  const cw = 54 * scale, ch = 88 * scale;
+  const cx = W / 2, cy = H / 2;
+
+  ctx.save();
+  ctx.translate(cx, cy);
+
+  // Shadow
+  ctx.shadowColor = 'rgba(0,0,0,.22)';
+  ctx.shadowBlur = 12 * scale;
+
+  // Body
+  ctx.fillStyle = car.color;
+  roundRectPath(ctx, -cw/2, -ch/2, cw, ch, 12 * scale);
+  ctx.fill();
+
+  ctx.shadowBlur = 0;
+
+  // Racing stripes for sticker squad
+  if (car.id === 3) {
+    const stripes = ['#e74c3c','#f39c12','#2ecc71','#3498db'];
+    const sw = cw / stripes.length;
+    ctx.save();
+    roundRectPath(ctx, -cw/2, -ch/2, cw, ch, 12 * scale);
+    ctx.clip();
+    stripes.forEach((sc, i) => {
+      ctx.fillStyle = sc;
+      ctx.globalAlpha = .35;
+      ctx.fillRect(-cw/2 + i * sw, -ch/2, sw, ch);
+    });
+    ctx.globalAlpha = 1;
+    ctx.restore();
+  }
+
+  // Windshield (front)
+  ctx.fillStyle = 'rgba(180,230,255,.8)';
+  roundRectPath(ctx, -cw/2+7, -ch/2+10, cw-14, 26 * scale, 8 * scale);
+  ctx.fill();
+
+  // Rear window
+  ctx.fillStyle = 'rgba(180,230,255,.6)';
+  roundRectPath(ctx, -cw/2+10, ch/2-28*scale, cw-20, 20*scale, 7*scale);
+  ctx.fill();
+
+  // Wheels
+  ctx.fillStyle = '#222';
+  [[-cw/2-5*scale, -ch/2+12*scale],[cw/2-1*scale, -ch/2+12*scale],
+   [-cw/2-5*scale, ch/2-28*scale],[cw/2-1*scale, ch/2-28*scale]].forEach(([wx,wy]) => {
+    ctx.fillRect(wx, wy, 6*scale, 16*scale);
+  });
+
+  // Logo / decal text
+  ctx.fillStyle = 'rgba(255,255,255,.9)';
+  ctx.font = `bold ${9*scale}px Fredoka One, Nunito, sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  const labels = ['GoriPen','Eco Pen','Notebook\nExpress','STICKER\nSQUAD'];
+  const parts = labels[car.id].split('\n');
+  parts.forEach((part, i) => {
+    ctx.fillText(part, 0, (i - (parts.length-1)/2) * 11*scale + 8*scale);
+  });
+
+  // Gorilla emoji for player car preview
+  ctx.font = `${13*scale}px serif`;
+  ctx.fillText('🦍', 0, -ch/2+28*scale);
+
+  ctx.restore();
+}
+
+function roundRectPath(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x+r, y);
+  ctx.arcTo(x+w, y, x+w, y+h, r);
+  ctx.arcTo(x+w, y+h, x, y+h, r);
+  ctx.arcTo(x, y+h, x, y, r);
+  ctx.arcTo(x, y, x+w, y, r);
+  ctx.closePath();
+}
+
+function makeStars(val, max = 5) {
+  let s = '';
+  for (let i = 1; i <= max; i++) {
+    s += `<span class="star ${i <= val ? 'on' : 'off'}">${i <= val ? '★' : '☆'}</span>`;
+  }
+  return `<span class="stat-stars">${s}</span>`;
+}
+
+/* Build car selection cards */
+function buildCarCards() {
+  const grid = document.getElementById('carCardsGrid');
+  CARS.forEach(car => {
+    const card = document.createElement('div');
+    card.className = 'car-select-card' + (car.id === 0 ? ' selected' : '');
+    card.dataset.id = car.id;
+
+    const cvs = document.createElement('canvas');
+    cvs.className = 'car-canvas-preview';
+    cvs.width = 110; cvs.height = 130;
+    card.appendChild(cvs);
+
+    card.innerHTML += `
+      <h4>${car.name}</h4>
+      <p>${car.desc}</p>
+      <div class="car-stat-row">
+        <div class="car-stat"><span>Nehézség</span>${makeStars(car.stars.nehezseg)}</div>
+        <div class="car-stat"><span>Sebesség</span>${makeStars(car.stars.sebesseg)}</div>
+        <div class="car-stat"><span>Kapacitás</span>${makeStars(car.stars.kapacitas)}</div>
+      </div>
+    `;
+
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.car-select-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      selectedCar = car;
+      document.getElementById('selectedCarInfo').textContent = car.name + ' · ' + car.special;
+    });
+
+    grid.appendChild(card);
+    setTimeout(() => drawCarPreview(cvs, car), 50);
+  });
+}
+
+buildCarCards();
+
+/* ============================================================
+   GAME ENGINE
+   ============================================================ */
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+const startBtn = document.getElementById('startGameBtn');
+
+const CANVAS_W = 420, CANVAS_H = 620;
+const ROAD_LEFT = 65, ROAD_RIGHT = CANVAS_W - 65;
+const ROAD_W = ROAD_RIGHT - ROAD_LEFT;
+const LANE_COUNT = 4;
+const LANE_W = ROAD_W / LANE_COUNT;
+const CAR_W = 38, CAR_H = 60;
+const ITEM_SIZE = 26;
+const OBS_SPEED_BASE = 2.2;
+const ITEM_SPEED_BASE = 1.8;
+const PLAYER_SPEED_X = 3.5;
+const PLAYER_SPEED_Y = 2.8;
+const PLAYER_ACCEL = 0.4;
+const PLAYER_FRICTION = 0.88;
+const SPAWN_INTERVAL = 65;
+const ITEM_INTERVAL = 48;
+const MILESTONE_ITEMS = [10, 25, 50];
+const STATIONERY_ITEMS = ['🖊️','📓','⭐','🖍️','📎','✏️','📏'];
+const CAR_COLORS = ['#e74c3c','#3498db','#e67e22','#9b59b6','#1abc9c','#f39c12'];
+
+let state = null;
+
+function resetGame() {
+  state = {
+    mode: 'menu', finalScore: 0, unlockedCoupon: null,
+    playerX: CANVAS_W/2 - CAR_W/2, playerY: CANVAS_H - CAR_H - 40,
+    velX: 0, velY: 0,
+    lives: 3, score: 0, collected: 0,
+    obstacles: [], items: [], keys: {}, frame: 0,
+    roadOffset: 0, milestone: 0, flashTimer: 0, invincible: 0
+  };
+}
+
+function startGame() {
+  resetGame();
+  state.mode = 'playing';
+}
+
+window.addEventListener('keydown', e => {
+  if (!state) return;
+  const k = e.key.toLowerCase();
+  if (['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].includes(k)) e.preventDefault();
+  state.keys[k] = true;
+});
+window.addEventListener('keyup', e => {
+  if (!state) return;
+  state.keys[e.key.toLowerCase()] = false;
+});
+
+startBtn.addEventListener('click', startGame);
+
+/* Draw game car (player or NPC) */
+function drawGameCar(x, y, color, roofColor, isPlayer) {
+  ctx.save();
+  ctx.translate(x, y);
+
+  ctx.fillStyle = color;
+  rrPath(-CAR_W/2, -CAR_H/2, CAR_W, CAR_H, 10);
+  ctx.fill();
+
+  // Stripes for sticker squad
+  if (isPlayer && selectedCar.id === 3) {
+    const sc = ['#e74c3c','#f39c12','#2ecc71','#3498db'];
+    rrPath(-CAR_W/2, -CAR_H/2, CAR_W, CAR_H, 10);
+    ctx.save(); ctx.clip();
+    sc.forEach((c, i) => {
+      ctx.fillStyle = c; ctx.globalAlpha = .35;
+      ctx.fillRect(-CAR_W/2 + i*(CAR_W/4), -CAR_H/2, CAR_W/4, CAR_H);
+    });
+    ctx.globalAlpha = 1; ctx.restore();
+  }
+
+  ctx.fillStyle = roofColor || 'rgba(255,255,255,.65)';
+  rrPath(-CAR_W/2+6, -CAR_H/2+8, CAR_W-12, 20, 8); ctx.fill();
+
+  ctx.fillStyle = isPlayer ? '#ffe2d1' : 'rgba(255,255,255,.3)';
+  rrPath(-CAR_W/2+8, -6, CAR_W-16, 16, 8); ctx.fill();
+
+  ctx.fillStyle = '#222';
+  [[-CAR_W/2-4,-CAR_H/2+10],[CAR_W/2-1,-CAR_H/2+10],
+   [-CAR_W/2-4,CAR_H/2-24],[CAR_W/2-1,CAR_H/2-24]].forEach(([wx,wy]) => ctx.fillRect(wx, wy, 5, 13));
+
+  if (isPlayer) {
+    ctx.font = '16px serif';
+    ctx.fillText('🦍', -8, -10);
+  }
+
+  ctx.fillStyle = '#ffd8c4';
+  rrPath(-CAR_W/2+6, CAR_H/2-10, 9, 5, 3); ctx.fill();
+  rrPath(CAR_W/2-15, CAR_H/2-10, 9, 5, 3); ctx.fill();
+
+  ctx.restore();
+}
+
+function rrPath(x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x+r, y);
+  ctx.arcTo(x+w, y, x+w, y+h, r);
+  ctx.arcTo(x+w, y+h, x, y+h, r);
+  ctx.arcTo(x, y+h, x, y, r);
+  ctx.arcTo(x, y, x+w, y, r);
+  ctx.closePath();
+}
+
+function update() {
+  if (!state || state.mode !== 'playing') return;
+  state.frame++;
+  const speedMult = selectedCar.speedMult;
+  const speed = (OBS_SPEED_BASE + state.score * 0.004) * speedMult;
+  const accel = PLAYER_ACCEL * speedMult;
+
+  if (state.keys['a'] || state.keys['arrowleft']) state.velX -= accel;
+  if (state.keys['d'] || state.keys['arrowright']) state.velX += accel;
+  if (state.keys['w'] || state.keys['arrowup']) state.velY -= accel;
+  if (state.keys['s'] || state.keys['arrowdown']) state.velY += accel * 0.5;
+
+  state.velX *= PLAYER_FRICTION;
+  state.velY *= PLAYER_FRICTION;
+  state.velX = Math.max(-PLAYER_SPEED_X * speedMult, Math.min(PLAYER_SPEED_X * speedMult, state.velX));
+  state.velY = Math.max(-PLAYER_SPEED_Y * speedMult, Math.min(PLAYER_SPEED_Y * speedMult, state.velY));
+
+  state.playerX += state.velX;
+  state.playerY += state.velY;
+  state.playerX = Math.max(ROAD_LEFT+6, Math.min(ROAD_RIGHT-CAR_W-6, state.playerX));
+  state.playerY = Math.max(70, Math.min(CANVAS_H-CAR_H-12, state.playerY));
+
+  state.roadOffset = (state.roadOffset + speed) % 40;
+  if (state.invincible > 0) state.invincible--;
+  if (state.flashTimer > 0) state.flashTimer--;
+
+  if (state.frame % Math.max(28, SPAWN_INTERVAL - Math.floor(state.score/4)) === 0) {
+    const lane = Math.floor(Math.random() * LANE_COUNT);
+    state.obstacles.push({
+      x: ROAD_LEFT + lane*LANE_W + (LANE_W-CAR_W)/2 + CAR_W/2,
+      y: -CAR_H-10 + CAR_H/2,
+      color: CAR_COLORS[Math.floor(Math.random()*CAR_COLORS.length)],
+      w: CAR_W, h: CAR_H
+    });
+  }
+
+  if (state.frame % ITEM_INTERVAL === 0) {
+    state.items.push({
+      x: ROAD_LEFT+18+Math.random()*(ROAD_W-36),
+      y: -ITEM_SIZE,
+      emoji: STATIONERY_ITEMS[Math.floor(Math.random()*STATIONERY_ITEMS.length)]
+    });
+  }
+
+  state.obstacles.forEach(o => o.y += speed);
+  state.obstacles = state.obstacles.filter(o => o.y < CANVAS_H+40);
+  state.items.forEach(i => i.y += ITEM_SPEED_BASE + speed*0.3);
+  state.items = state.items.filter(i => i.y < CANVAS_H+20);
+
+  if (state.invincible <= 0) {
+    for (const o of state.obstacles) {
+      if (state.playerX < o.x+o.w/2-8 && state.playerX+CAR_W > o.x-o.w/2+8 &&
+          state.playerY < o.y+o.h/2-8 && state.playerY+CAR_H > o.y-o.h/2+8) {
+        state.lives--;
+        state.invincible = 90;
+        state.flashTimer = 30;
+        o.y = CANVAS_H+100;
+        if (state.lives <= 0) { state.finalScore = state.score; state.mode = 'over'; return; }
+      }
+    }
+  }
+
+  const pickupR = 26 * selectedCar.pickupBonus;
+  for (let i = state.items.length-1; i >= 0; i--) {
+    const it = state.items[i];
+    const cx = state.playerX + CAR_W/2;
+    const cy = state.playerY + CAR_H/2;
+    if (Math.abs(cx-it.x) < pickupR && Math.abs(cy-it.y) < pickupR) {
+      state.items.splice(i, 1);
+      let pts = 1;
+      if (selectedCar.id === 3 && it.emoji === '⭐') pts = 2;
+      state.score += pts;
+      state.collected += pts;
+      for (let m = MILESTONE_ITEMS.length-1; m >= 0; m--) {
+        if (state.collected >= MILESTONE_ITEMS[m] && state.milestone <= m) {
+          state.milestone = m+1;
+          state.unlockedCoupon = ['GORI5','GORI10','GORI20'][m];
+          state.flashTimer = 60;
+        }
+      }
+    }
+  }
+}
+
+function drawBg() {
+  ctx.fillStyle = '#7ec850'; ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+  for (let fy = 0; fy < CANVAS_H; fy += 45) {
+    for (const fx of [12, 38, CANVAS_W-38, CANVAS_W-12]) {
+      const offset = ((fy + state.roadOffset*2) % 90) - 5;
+      ctx.font = '9px serif';
+      ctx.fillText('🌼', fx+(fy%18)-4, fy+offset);
+    }
+  }
+  ctx.fillStyle = '#666'; ctx.fillRect(ROAD_LEFT-4, 0, ROAD_W+8, CANVAS_H);
+  ctx.fillStyle = '#4a4a4a'; ctx.fillRect(ROAD_LEFT, 0, ROAD_W, CANVAS_H);
+  ctx.fillStyle = '#eee';
+  ctx.fillRect(ROAD_LEFT, 0, 3, CANVAS_H);
+  ctx.fillRect(ROAD_RIGHT-3, 0, 3, CANVAS_H);
+  ctx.strokeStyle = '#aaa'; ctx.lineWidth = 2; ctx.setLineDash([18,18]);
+  for (let l = 1; l < LANE_COUNT; l++) {
+    const lx = ROAD_LEFT + l*LANE_W;
+    ctx.beginPath();
+    for (let dy = -state.roadOffset; dy < CANVAS_H+40; dy += 36) {
+      ctx.moveTo(lx, dy); ctx.lineTo(lx, dy+18);
+    }
+    ctx.stroke();
+  }
+  ctx.setLineDash([]);
+}
+
+function drawHUD() {
+  ctx.fillStyle = 'rgba(255,255,255,.92)';
+  rrPath(10, 10, 195, 72, 14); ctx.fill();
+  ctx.fillStyle = '#1a2e22';
+  ctx.font = 'bold 16px Nunito, Arial';
+  ctx.fillText('Pont: ' + state.score, 22, 35);
+  ctx.fillText('Életek: ' + '❤️'.repeat(state.lives), 22, 62);
+
+  if (state.unlockedCoupon) {
+    ctx.fillStyle = 'rgba(255,255,255,.92)';
+    rrPath(225, 10, 185, 50, 14); ctx.fill();
+    ctx.fillStyle = '#1e8f55';
+    ctx.fillText('Kupon: ' + state.unlockedCoupon, 237, 40);
+  }
+
+  // Car name badge
+  ctx.fillStyle = selectedCar.color + 'dd';
+  rrPath(10, CANVAS_H-36, 170, 26, 8); ctx.fill();
+  ctx.fillStyle = 'white';
+  ctx.font = 'bold 11px Nunito, Arial';
+  ctx.fillText('🚗 ' + selectedCar.name, 18, CANVAS_H-18);
+}
+
+function drawMenu() {
+  drawBg();
+  ctx.fillStyle = 'rgba(255,255,255,.96)';
+  rrPath(44, 180, 332, 200, 22); ctx.fill();
+  ctx.fillStyle = '#1a2e22';
+  ctx.font = 'bold 26px Fredoka One, Arial';
+  ctx.textAlign = 'center';
+  ctx.fillText('GoriPen Road Rush', CANVAS_W/2, 222);
+  ctx.font = '15px Nunito, Arial';
+  ctx.fillText('Válassz autót, majd nyomd meg', CANVAS_W/2, 260);
+  ctx.fillText('a „Játék Indítása" gombot!', CANVAS_W/2, 282);
+  ctx.fillText('W / A / D – irányítás', CANVAS_W/2, 312);
+
+  // Draw selected car preview
+  ctx.save();
+  ctx.translate(CANVAS_W/2, 355);
+  ctx.font = '16px Nunito, Arial';
+  ctx.fillStyle = '#5a7060';
+  ctx.fillText('Kiválasztott: ' + selectedCar.name, 0, 0);
+  ctx.restore();
+  ctx.textAlign = 'left';
+}
+
+function drawOver() {
+  drawBg();
+  ctx.fillStyle = 'rgba(255,255,255,.96)';
+  rrPath(44, 180, 332, 230, 22); ctx.fill();
+  ctx.fillStyle = '#1a2e22';
+  ctx.font = 'bold 28px Fredoka One, Arial';
+  ctx.textAlign = 'center';
+  ctx.fillText('Játék Vége!', CANVAS_W/2, 222);
+  ctx.font = '15px Nunito, Arial';
+  ctx.fillText('Próbáld újra, gyűjts még több tárgyat!', CANVAS_W/2, 260);
+  ctx.fillText('Pontszám: ' + state.finalScore, CANVAS_W/2, 288);
+  if (state.unlockedCoupon) {
+    ctx.fillStyle = '#1e8f55';
+    ctx.font = 'bold 16px Nunito, Arial';
+    ctx.fillText('Kuponod: ' + state.unlockedCoupon, CANVAS_W/2, 322);
+    ctx.font = '13px Nunito, Arial';
+    ctx.fillStyle = '#5a7060';
+    ctx.fillText('Használd a webshopban! 🛒', CANVAS_W/2, 346);
+  }
+  ctx.textAlign = 'left';
+}
+
+function render() {
+  if (!state) return;
+  if (state.mode === 'menu') { drawMenu(); return; }
+  if (state.mode === 'over') { drawOver(); return; }
+
+  drawBg();
+
+  for (const o of state.obstacles) {
+    drawGameCar(o.x, o.y, o.color, null, false);
+  }
+
+  for (const it of state.items) {
+    ctx.save();
+    ctx.shadowColor = 'rgba(255,215,0,.5)';
+    ctx.shadowBlur = 8;
+    ctx.font = ITEM_SIZE + 'px serif';
+    ctx.fillText(it.emoji, it.x-ITEM_SIZE/2, it.y+ITEM_SIZE/2);
+    ctx.restore();
+  }
+
+  const flash = state.flashTimer > 0 && Math.floor(state.flashTimer/5) % 2 === 0;
+  if (!flash) {
+    drawGameCar(
+      state.playerX + CAR_W/2,
+      state.playerY + CAR_H/2,
+      selectedCar.color,
+      selectedCar.roofColor,
+      true
+    );
+  }
+
+  drawHUD();
+}
+
+function loop() { update(); render(); requestAnimationFrame(loop); }
+
+resetGame();
+loop();
+
+/* Nav mobile toggle */
+document.getElementById('menuBtn').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+</body>
+</html>
